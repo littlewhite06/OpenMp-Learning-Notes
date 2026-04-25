@@ -1,0 +1,13 @@
+# Ignore everything first
+*
+
+# But keep folders
+!*/
+
+# Keep source and docs
+!*.cpp
+!*.md
+!.gitignore
+
+# Ignore macOS files
+.DS_Store
