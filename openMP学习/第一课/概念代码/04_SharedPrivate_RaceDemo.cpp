@@ -14,7 +14,7 @@ int main(){
         
         #pragma omp critical
         {
-            cout << "Thread " << tid << " sees x =" << x << endl;
+            cout << "Thread " << tid << " sees x = " << x << endl;
         }
 
         }
@@ -25,14 +25,14 @@ int main(){
 
         cout << "Private Value" << endl;
         x = -1;
-        #pragma omp parallel private(x)   //每个线程创建一个x
+        #pragma omp parallel private(x)   //每个线程创建一个局部x，但最后输出的x不随内部操作改变
     {
-        int tid = omp_get_thread_num();   //但是注意private的x不一定是外部的值，可以是任意值，此题在内部赋值，因此所有值相同
+        int tid = omp_get_thread_num();   //但是注意private的x不一定是外部的值，可以是任意值，此题在内部赋值，因此所有初始值相同
         x = tid;
         
         #pragma omp critical
         {
-            cout << "Thread " << tid << " sees x =" << x << endl;
+            cout << "Thread " << tid << " sees x = " << x << endl;
         }
 
         }
